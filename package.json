@@ -1,0 +1,24 @@
+{
+  "name": "js-core-animatch",
+  "version": "1.0.0",
+  "description": "plain ES6 classes to handle an animatch like game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'testing...'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalitohg/js-core-animatch.git"
+  },
+  "keywords": [
+    "ES6",
+    "animatch",
+    "game"
+  ],
+  "author": "Eduardo Hernandez Guerrero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lalitohg/js-core-animatch/issues"
+  },
+  "homepage": "https://github.com/lalitohg/js-core-animatch#readme"
+}
