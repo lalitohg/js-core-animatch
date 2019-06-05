@@ -18,12 +18,3 @@ describe('test mocha and chai themselves are woring :)', function() {
         foo.should.equal(true);
     });
 });
-
-// var assert = require('assert');
-// describe('test mocha and chai themselves are woring :)', function() {
-//   describe('#indexOf()', function() {
-//     it('should return -1 when the value is not present', function() {
-//       assert.equal([1, 2, 3].indexOf(4), -1);
-//     });
-//   });
-// });
