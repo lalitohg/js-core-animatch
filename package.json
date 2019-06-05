@@ -4,7 +4,7 @@
   "description": "plain ES6 classes to handle an animatch like game",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'testing...'"
+    "test": "npx mocha"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/lalitohg/js-core-animatch/issues"
   },
-  "homepage": "https://github.com/lalitohg/js-core-animatch#readme"
+  "homepage": "https://github.com/lalitohg/js-core-animatch#readme",
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
 }
