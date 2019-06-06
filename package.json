@@ -4,7 +4,7 @@
   "description": "plain ES6 classes to handle an animatch like game",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha"
+    "test": "npx mocha --require @babel/register"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,15 @@
   },
   "homepage": "https://github.com/lalitohg/js-core-animatch#readme",
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
     "chai": "*",
     "mocha": "*"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "core-js": "^3.1.3"
   }
 }
