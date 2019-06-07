@@ -1,4 +1,4 @@
-const COLORS = {
+export const COLORS = {
     "blue": 1,
     "pink": 2,
     "yellow": 3,
@@ -8,7 +8,7 @@ const COLORS = {
     "red": 7,
 };
 
-const ANIMALS = {
+export const ANIMALS = {
     "panda": 1,
     "deer": 2,
     "sloth": 3,
@@ -18,8 +18,8 @@ const ANIMALS = {
     "zebra": 7,
 };
 
-const PRESENTS = {
-    "ballons": 1,
+export const PRESENTS = {
+    "balloons": 1,
     "cake": 2,
     "surprise": 3,
     "guitar": 4,
