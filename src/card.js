@@ -1,8 +1,16 @@
 import { ANIMALS, PRESENTS, COLORS } from './constants';
 
 export class Card {
-    constructor(animal, present, hatColor, eyeGlassesColor, scarfColor, topColor, bottomColor, shoesColor) {
-
+    constructor(
+        animal,
+        present,
+        hatColor,
+        eyeGlassesColor,
+        scarfColor,
+        topColor,
+        bottomColor,
+        shoesColor
+    ) {
         if (!Card.validateAgainstConstantValues(ANIMALS, animal)) {
             throw new Error(`Invalid value for animal: ${animal}`);
         }
@@ -11,8 +19,26 @@ export class Card {
             throw new Error(`Invalid value for present: ${present}`);
         }
 
-        if (!Card.validateAgainstConstantValues(COLORS, [hatColor, eyeGlassesColor, scarfColor, topColor, bottomColor, shoesColor])) {
-            throw new Error(`Invalid value for colors: ${[hatColor, eyeGlassesColor, scarfColor, topColor, bottomColor, shoesColor].join()}`);
+        if (
+            !Card.validateAgainstConstantValues(COLORS, [
+                hatColor,
+                eyeGlassesColor,
+                scarfColor,
+                topColor,
+                bottomColor,
+                shoesColor
+            ])
+        ) {
+            throw new Error(
+                `Invalid value for colors: ${[
+                    hatColor,
+                    eyeGlassesColor,
+                    scarfColor,
+                    topColor,
+                    bottomColor,
+                    shoesColor
+                ].join()}`
+            );
         }
 
         this.animal = animal;
@@ -34,7 +60,7 @@ export class Card {
             }
         } else {
             let invalidValues = [];
-            valueToCheck.forEach((value) => {
+            valueToCheck.forEach(value => {
                 if (expectedValues.indexOf(value) < 0) {
                     invalidValues.push(value);
                 }
