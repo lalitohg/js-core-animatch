@@ -3,7 +3,7 @@
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["plugin:prettier/recommended"],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -13,10 +13,5 @@
         "sourceType": "module"
     },
     "rules": {
-        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-        "no-var": "error",
-        "arrow-spacing": ["error", { "before": true, "after": true }],
-        "no-duplicate-imports": "error",
-        "prefer-arrow-callback": "error"
     }
 }
