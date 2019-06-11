@@ -4,7 +4,7 @@
   "description": "plain ES6 classes to handle an animatch like game",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha --require @babel/register --require @babel/polyfill"
+    "test": "npx nyc mocha --require @babel/register --require @babel/polyfill"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "babel-loader": "^8.0.6",
     "chai": "*",
     "mocha": "*",
+    "nyc": "^14.1.1",
     "webpack": "^4.33.0",
     "webpack-cli": "^3.3.3"
   },
