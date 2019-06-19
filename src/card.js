@@ -1,4 +1,7 @@
 import { ANIMALS, PRESENTS, COLORS } from './constants';
+import { InvalidAnimalValueError } from './errors/invalid_animal_value_error'
+import { InvalidPresentValueError } from './errors/invalid_present_value_error'
+import { InvalidColorValueError } from './errors/invalid_color_value_error'
 
 export class Card {
     constructor(
@@ -12,11 +15,11 @@ export class Card {
         shoesColor
     ) {
         if (!Card.validateAgainstConstantValues(ANIMALS, animal)) {
-            throw new Error(`Invalid value for animal: ${animal}`);
+            throw new InvalidAnimalValueError(animal);
         }
 
         if (!Card.validateAgainstConstantValues(PRESENTS, present)) {
-            throw new Error(`Invalid value for present: ${present}`);
+            throw new InvalidPresentValueError(present);
         }
 
         if (
@@ -29,15 +32,14 @@ export class Card {
                 shoesColor
             ])
         ) {
-            throw new Error(
-                `Invalid value for colors: ${[
+            throw new InvalidColorValueError([
                     hatColor,
                     eyeGlassesColor,
                     scarfColor,
                     topColor,
                     bottomColor,
                     shoesColor
-                ].join()}`
+                ]
             );
         }
 
