@@ -8,7 +8,6 @@ import { COLORS, ANIMALS, PRESENTS } from '../src/constants';
 describe('Test Deck class', function() {
     it('should create Deck with default card data', function() {
         let deck = new Deck();
-        console.log("------------------",deck.cards);
         expect(deck).to.have.property('cards').and.have.property('length').equal(4);
     });
 

@@ -1,7 +1,7 @@
 import { assert, expect, should } from 'chai';
 should();
 
-import {COLORS, ANIMALS, PRESENTS, DEFAULT_CARDS_DATA} from '../src/constants';
+import {COLORS, ANIMALS, PRESENTS} from '../src/constants';
 
 describe('test ES6 style testing capability', function () {
     describe('use mocha, import chai and ES6 test module', function () {
