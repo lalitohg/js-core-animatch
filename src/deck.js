@@ -1,4 +1,4 @@
-import { DEFAULT_CARDS_DATA} from './default_cards_data';
+import { DEFAULT_CARDS_DATA } from './default_cards_data';
 import { InvalidCardDataError } from './errors/invalid_card_data_error';
 
 export class Deck {
@@ -19,7 +19,7 @@ export class Deck {
         const secondHalfCards = this.cards.slice(halfCardsLength);
         let shuffledCards = [];
 
-        while(firstHalfCards.length || secondHalfCards.length) {
+        while (firstHalfCards.length || secondHalfCards.length) {
             if (secondHalfCards.length) {
                 shuffledCards.push(secondHalfCards.shift());
             }

@@ -1,7 +1,7 @@
 import { ANIMALS, PRESENTS, COLORS } from './constants';
-import { InvalidAnimalValueError } from './errors/invalid_animal_value_error'
-import { InvalidPresentValueError } from './errors/invalid_present_value_error'
-import { InvalidColorValueError } from './errors/invalid_color_value_error'
+import { InvalidAnimalValueError } from './errors/invalid_animal_value_error';
+import { InvalidPresentValueError } from './errors/invalid_present_value_error';
+import { InvalidColorValueError } from './errors/invalid_color_value_error';
 
 export class Card {
     constructor(
@@ -33,24 +33,25 @@ export class Card {
             ])
         ) {
             throw new InvalidColorValueError([
-                    hatColor,
-                    eyeGlassesColor,
-                    scarfColor,
-                    topColor,
-                    bottomColor,
-                    shoesColor
-                ]
-            );
+                hatColor,
+                eyeGlassesColor,
+                scarfColor,
+                topColor,
+                bottomColor,
+                shoesColor
+            ]);
         }
 
-        this.animal = animal;
-        this.present = present;
-        this.hatColor = hatColor;
-        this.eyeGlassesColor = eyeGlassesColor;
-        this.scarfColor = scarfColor;
-        this.topColor = topColor;
-        this.bottomColor = bottomColor;
-        this.shoesColor = shoesColor;
+        Object.assign(this, {
+            animal,
+            present,
+            hatColor,
+            eyeGlassesColor,
+            scarfColor,
+            topColor,
+            bottomColor,
+            shoesColor
+        });
     }
 
     static validateAgainstConstantValues(constanSet, valueToCheck) {

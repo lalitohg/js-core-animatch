@@ -1,7 +1,6 @@
 import { Card } from './card';
 import { ANIMALS, PRESENTS, COLORS } from './constants';
 
-
 export const DEFAULT_CARDS_DATA = [
     new Card(
         ANIMALS.panda,
