@@ -1,4 +1,4 @@
-import { DEFAULT_CARDS_DATA } from './default_cards_data';
+import { generateDefaultCardsData } from './default_cards_data';
 import { InvalidCardDataError } from './errors/invalid_card_data_error';
 
 export class Deck {
@@ -37,7 +37,7 @@ export class Deck {
 
     reset(cards) {
         if (!cards) {
-            this.cards = DEFAULT_CARDS_DATA;
+            this.cards = generateDefaultCardsData();
         } else if (!Deck.validateCardsData(cards)) {
             throw new InvalidCardDataError(JSON.stringify(cards));
         } else {
