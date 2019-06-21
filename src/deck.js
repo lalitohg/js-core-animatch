@@ -1,58 +1,9 @@
-import { Card } from './card';
-import { ANIMALS, PRESENTS, COLORS } from './constants';
-
-const DEFAULT_CARDS_DATA = [
-    new Card(
-        ANIMALS.panda,
-        PRESENTS.balloons,
-        COLORS.blue,
-        COLORS.green,
-        COLORS.pink,
-        COLORS.purple,
-        COLORS.blue,
-        COLORS.yellow
-    ),
-    new Card(
-        ANIMALS.panda,
-        PRESENTS.book,
-        COLORS.green,
-        COLORS.pink,
-        COLORS.green,
-        COLORS.red,
-        COLORS.red,
-        COLORS.blue
-    ),
-    new Card(
-        ANIMALS.sloth,
-        PRESENTS.balloons,
-        COLORS.pink,
-        COLORS.purple,
-        COLORS.red,
-        COLORS.yellow,
-        COLORS.red,
-        COLORS.green
-    ),
-    new Card(
-        ANIMALS.sloth,
-        PRESENTS.candy,
-        COLORS.blue,
-        COLORS.yellow,
-        COLORS.purple,
-        COLORS.pink,
-        COLORS.green,
-        COLORS.blue
-    )
-];
+import { generateDefaultCardsData } from './default_cards_data';
+import { InvalidCardDataError } from './errors/invalid_card_data_error';
 
 export class Deck {
     constructor(cards = null) {
-        if (!cards) {
-            this.cards = DEFAULT_CARDS_DATA;
-        } else if (!Deck.validateCardsData(cards)) {
-            throw new Error(`Invalid cards data ${JSON.stringify(cards)}`);
-        } else {
-            this.cards = cards;
-        }
+        this.reset(cards);
     }
 
     static validateCardsData(cardsData) {
@@ -60,5 +11,37 @@ export class Deck {
             return false;
         }
         return true;
+    }
+
+    shuffle() {
+        const halfCardsLength = Math.ceil(this.cards.length / 2);
+        const firstHalfCards = this.cards.slice(0, halfCardsLength);
+        const secondHalfCards = this.cards.slice(halfCardsLength);
+        let shuffledCards = [];
+
+        while (firstHalfCards.length || secondHalfCards.length) {
+            if (secondHalfCards.length) {
+                shuffledCards.push(secondHalfCards.shift());
+            }
+            if (firstHalfCards.length) {
+                shuffledCards.push(firstHalfCards.shift());
+            }
+        }
+
+        this.cards = shuffledCards;
+    }
+
+    getTopCard() {
+        return this.cards.pop();
+    }
+
+    reset(cards) {
+        if (!cards) {
+            this.cards = generateDefaultCardsData();
+        } else if (!Deck.validateCardsData(cards)) {
+            throw new InvalidCardDataError(JSON.stringify(cards));
+        } else {
+            this.cards = cards;
+        }
     }
 }

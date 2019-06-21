@@ -1,4 +1,7 @@
 import { ANIMALS, PRESENTS, COLORS } from './constants';
+import { InvalidAnimalValueError } from './errors/invalid_animal_value_error';
+import { InvalidPresentValueError } from './errors/invalid_present_value_error';
+import { InvalidColorValueError } from './errors/invalid_color_value_error';
 
 export class Card {
     constructor(
@@ -12,11 +15,11 @@ export class Card {
         shoesColor
     ) {
         if (!Card.validateAgainstConstantValues(ANIMALS, animal)) {
-            throw new Error(`Invalid value for animal: ${animal}`);
+            throw new InvalidAnimalValueError(animal);
         }
 
         if (!Card.validateAgainstConstantValues(PRESENTS, present)) {
-            throw new Error(`Invalid value for present: ${present}`);
+            throw new InvalidPresentValueError(present);
         }
 
         if (
@@ -29,30 +32,30 @@ export class Card {
                 shoesColor
             ])
         ) {
-            throw new Error(
-                `Invalid value for colors: ${[
-                    hatColor,
-                    eyeGlassesColor,
-                    scarfColor,
-                    topColor,
-                    bottomColor,
-                    shoesColor
-                ].join()}`
-            );
+            throw new InvalidColorValueError([
+                hatColor,
+                eyeGlassesColor,
+                scarfColor,
+                topColor,
+                bottomColor,
+                shoesColor
+            ]);
         }
 
-        this.animal = animal;
-        this.present = present;
-        this.hatColor = hatColor;
-        this.eyeGlassesColor = eyeGlassesColor;
-        this.scarfColor = scarfColor;
-        this.topColor = topColor;
-        this.bottomColor = bottomColor;
-        this.shoesColor = shoesColor;
+        Object.assign(this, {
+            animal,
+            present,
+            hatColor,
+            eyeGlassesColor,
+            scarfColor,
+            topColor,
+            bottomColor,
+            shoesColor
+        });
     }
 
-    static validateAgainstConstantValues(constanSet, valueToCheck) {
-        const expectedValues = Object.values(constanSet);
+    static validateAgainstConstantValues(constantSet, valueToCheck) {
+        const expectedValues = Object.values(constantSet);
         if (!Array.isArray(valueToCheck)) {
             let valueFoundIndex = expectedValues.indexOf(valueToCheck);
             if (valueFoundIndex < 0) {
@@ -71,5 +74,19 @@ export class Card {
         }
 
         return true;
+    }
+
+    static validateCardSet(cards) {
+        const validType = Array.isArray(cards);
+        let validContentType = true;
+        if (cards.length > 0) {
+            for (let i = cards.length - 1; i >= 0; i--) {
+                if (!(cards[i] instanceof Card)) {
+                    validContentType = false;
+                    break;
+                }
+            }
+        }
+        return validType && validContentType;
     }
 }
