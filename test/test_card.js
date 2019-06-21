@@ -3,6 +3,13 @@ should();
 
 import { Card } from '../src/card';
 import { COLORS, ANIMALS, PRESENTS } from '../src/constants';
+import {InvalidAnimalValueError} from '../src/errors/invalid_animal_value_error';
+import {InvalidColorValueError} from '../src/errors/invalid_color_value_error';
+import {InvalidPresentValueError} from '../src/errors/invalid_present_value_error';
+
+function createCard(animal, present, hat, eyeglasses, scarf, top, bottom, shoes){
+    return new Card(animal, present, hat, eyeglasses, scarf, top, bottom, shoes);
+}
 
 describe('Test Card class', function () {
     it('should create a new card with right parameters', function () {
@@ -21,27 +28,15 @@ describe('Test Card class', function () {
 
     describe('Reject invalid values for constructor', function () {
         it('Should reject bad animal value', function() {
-            function createCard() {
-                return new Card('ostritch', 'maracas', 999, 999, 999, 999, 999, 999);
-            }
-    
-            expect(() => createCard()).to.throw(Error, 'Invalid value for animal: ostritch');
+            expect(() => createCard('ostritch', 'maracas', 999, 999, 999, 999, 999, 999)).to.throw(InvalidAnimalValueError, 'Invalid value for animal: ostritch');
         });
 
         it('Should reject bad present value', function() {
-            function createCard() {
-                return new Card(ANIMALS.panda, 'maracas', 999, 999, 999, 999, 999, 999);
-            }
-    
-            expect(() => createCard()).to.throw(Error, 'Invalid value for present: maracas');
+            expect(() => createCard(ANIMALS.panda, 'maracas', 999, 999, 999, 999, 999, 999)).to.throw(InvalidPresentValueError, 'Invalid value for present: maracas');
         });
 
         it('Should reject bad color value', function() {
-            function createCard() {
-                return new Card(ANIMALS.panda, PRESENTS.balloons, 999, 999, 999, 999, 999, 999);
-            }
-    
-            expect(() => createCard()).to.throw(Error, 'Invalid value for colors: 999,999,999,999,999,999');
+            expect(() => createCard(ANIMALS.panda, PRESENTS.balloons, 999, 999, 999, 999, 999, 999)).to.throw(InvalidColorValueError, 'Invalid value for colors: 999,999,999,999,999,999');
         });
         
     });

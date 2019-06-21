@@ -54,8 +54,8 @@ export class Card {
         });
     }
 
-    static validateAgainstConstantValues(constanSet, valueToCheck) {
-        const expectedValues = Object.values(constanSet);
+    static validateAgainstConstantValues(constantSet, valueToCheck) {
+        const expectedValues = Object.values(constantSet);
         if (!Array.isArray(valueToCheck)) {
             let valueFoundIndex = expectedValues.indexOf(valueToCheck);
             if (valueFoundIndex < 0) {
@@ -74,5 +74,19 @@ export class Card {
         }
 
         return true;
+    }
+
+    static validateCardSet(cards) {
+        const validType = Array.isArray(cards);
+        let validContentType = true;
+        if (cards.length > 0) {
+            for (let i = cards.length - 1; i >= 0; i--) {
+                if (!(cards[i] instanceof Card)) {
+                    validContentType = false;
+                    break;
+                }
+            }
+        }
+        return validType && validContentType;
     }
 }

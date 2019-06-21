@@ -45,8 +45,6 @@ describe('Test Deck class', function() {
             const originalCardSet = [...deck.cards];
             deck.shuffle();
             const shuffledCardSet = [...deck.cards];
-            console.log("original", originalCardSet)
-            console.log("shuffled", shuffledCardSet)
 
             assert.equal(originalCardSet.length, shuffledCardSet.length);
 
